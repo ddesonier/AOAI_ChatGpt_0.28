@@ -10,6 +10,7 @@ import json
 ENV = dotenv.dotenv_values(".env")
 with st.sidebar.expander("Environment Variables"):
     st.write(ENV)
+apikey = st.text_input("Enter a API Key", type="password")
 
 models = ["gpt-4o", "gpt-35-turbo", "dall-e-3"]
 selected_model = st.sidebar.selectbox(
@@ -27,18 +28,14 @@ model = switch(selected_model)
 print(model)
 # Set up the Open AI Client
 
-openai.api_type = "azure"
-#openai.api_base = "https://tp-tprompt1.openai.azure.com"
-#openai.api_version = "2024-02-01"
-#openai.api_key = "e26fd76c0671416dbdc20f1e09110b88"
 
+
+openai.api_type = "azure"
 openai.api_base = ENV["AZURE_OPENAI_ENDPOINT"]
 openai.api_version = ENV["AZURE_OPENAI_API_VERSION"]
-openai.api_key = ENV["AZURE_OPENAI_KEY"]
+#openai.api_key = ENV["AZURE_OPENAI_KEY"]
+openai.api_key = apikey
 # endregion
-
-print(openai.api_base)
-
 
 # region PROMPT SETUP
 
