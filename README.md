@@ -1,4 +1,4 @@
-# Streamlit ChatGPT Harness
+# AOAI ChatGPT Demo using Streamlit
 
 A fully python based Streamlit development harness for ChatGPT hosted in Azure OpenAI Service.
 
