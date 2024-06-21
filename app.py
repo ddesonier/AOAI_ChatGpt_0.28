@@ -147,7 +147,7 @@ with container:
         )
         st.session_state["past"].append(user_input)
         st.session_state["generated"].append(output)
-        st.session_state["model_name"].append(ENV["AZURE_OPENAI_CHATGPT_DEPLOYMENT"])
+        st.session_state["model_name"].append(model)
         st.session_state["total_tokens"].append(total_tokens)
 
         # from https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/#pricing
