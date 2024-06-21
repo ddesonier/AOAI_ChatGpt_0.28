@@ -7,14 +7,17 @@ import datetime
 import json
 
 # Load environment variables
+endpoint="https://tp-tprompt1.openai.azure.com"
+apiversion="2024-02-01"
+deployment="gpt-4o_Demo"
+
 ENV = dotenv.dotenv_values(".env")
 with st.sidebar.expander("Environment Variables"):
     st.write(ENV)
 apikey = st.text_input("Enter a API Key", type="password")
+apiversion = st.text_input("Enter a API Key", value="2024-02-01")
+deployment = st.text_input("Deployment Name", value="gpt-4o_Demo")
 
-endpoint="https://tp-tprompt1.openai.azure.com"
-apiversion="2024-02-01"
-deployment="gpt-4o_Demo"
 
 models = ["gpt-4o", "gpt-35-turbo", "dall-e-3", "gpt-4"]
 selected_model = st.sidebar.selectbox(
@@ -37,9 +40,6 @@ print(model)
 openai.api_type = "azure"
 openai.api_base = endpoint
 openai.api_version = apiversion
-#openai.api_base = ENV["AZURE_OPENAI_ENDPOINT"]
-#openai.api_version = ENV["AZURE_OPENAI_API_VERSION"]
-#openai.api_key = ENV["AZURE_OPENAI_KEY"]
 openai.api_key = apikey
 # endregion
 
