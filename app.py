@@ -16,7 +16,7 @@ endpoint="https://tp-tprompt1.openai.azure.com"
 apiversion="2024-02-01"
 deployment="gpt-4o_Demo"
 
-models = ["gpt-4o", "gpt-35-turbo", "dall-e-3"]
+models = ["gpt-4o", "gpt-35-turbo", "dall-e-3", "gpt-4"]
 selected_model = st.sidebar.selectbox(
     'What model would you like to try?',
     (models)

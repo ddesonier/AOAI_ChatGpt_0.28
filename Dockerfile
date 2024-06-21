@@ -1,6 +1,8 @@
 # app/Dockerfile
 
 FROM python:3.9-slim
+# FROM python:alpine3.20
+
 
 WORKDIR /app
 
@@ -12,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/ddesonier/AOAI_ChatGpt_0.28.git .
+
 
 RUN pip install -r requirements.txt
 
