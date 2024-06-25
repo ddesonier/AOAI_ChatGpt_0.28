@@ -7,7 +7,7 @@ A fully python based Streamlit development harness for ChatGPT hosted in Azure O
 ### Setting up the Environment
 
 To get started, you will need to create a `.env` file in the root of the project.  This file will contain the environment variables needed to run the app. You can make a copy of `local.env` and rename it to `.env` to get started.  You will need to fill in the following values:
-
+ 
 ```bash
 AZURE_OPENAI_ENDPOINT=""
 AZURE_OPENAI_KEY=""

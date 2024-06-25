@@ -11,26 +11,26 @@ import json
 endpoint = st.text_input("Enter the AOAI Endpoint", value="https://{instance_name}.openai.azure.com")
 apikey = st.text_input("Enter a API Key", type="password")
 apiversion = st.text_input("Enter a API Key", value="2024-02-01")
-
+model = st.text_input("Enter Model Deployment Name", value="{deployment_name}")
 
 # Define available models
-models = ["gpt-4o", "gpt-35-turbo"]
+#models = ["gpt-4o", "gpt-35-turbo"]
 
 # Select a model from the available models
-selected_model = st.sidebar.selectbox(
-    'What model would you like to try?',
-    (models)
-)
+#selected_model = st.sidebar.selectbox(
+#    'What model would you like to try?',
+#    (models)
+#) 
 
 # Map selected model to a deployment
-def switch(selected_model):
-    if selected_model == "gpt-4o":
-        return "gpt-4o_Demo"
-    elif selected_model == "gpt-35-turbo":
-        return "completions35turbo"
+#def switch(selected_model):
+#    if selected_model == "gpt-4o":
+#        return "gpt-4o_Demo"
+#    elif selected_model == "gpt-35-turbo":
+#        return "completions35turbo"
 
 # Get the deployment name based on the selected model
-model = switch(selected_model)
+#model = switch(selected_model)
 
 # Set up the Open AI Client
 openai.api_type = "azure"
