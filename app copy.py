@@ -1,25 +1,47 @@
 import streamlit as st
 from streamlit_chat import message
-import dotenv
+from dotenv import load_dotenv
 import os
 import openai
 import datetime
 import json
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.cognitiveservices import CognitiveServicesManagementClient
 
+load_dotenv()
+
+subscription=os.getenv('AZURE_SUBSCRIPTION_ID')
+resource_group=os.getenv('AZURE_RESOURCE_GROUP')
+accountname=os.getenv('AccountName')
+
+print(subscription)
+def list_deployments():
+    client = CognitiveServicesManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id=subscription,
+    )
+
+    response = client.deployments.list(
+        resource_group_name=resource_group,
+        account_name=accountname,
+    )
+    for item in response:
+        print(item)
+'''
 # Get user input for AOAI endpoint, API key, API version, and deployment name
 endpoint = st.text_input("Enter the AOAI Endpoint", value="https://{instance_name}.openai.azure.com")
 apikey = st.text_input("Enter a API Key", type="password")
 apiversion = st.text_input("Enter a API Key", value="2024-02-01")
 model = st.text_input("Enter Model Deployment Name", value="{deployment_name}")
-
+'''
 # Define available models
-#models = ["gpt-4o", "gpt-35-turbo"]
+models = ["gpt-4o", "gpt-35-turbo"]
 
 # Select a model from the available models
-#selected_model = st.sidebar.selectbox(
-#    'What model would you like to try?',
-#    (models)
-#) 
+selected_model = st.sidebar.selectbox(
+    'What model would you like to try?',
+    (models)
+) 
 
 # Map selected model to a deployment
 #def switch(selected_model):
@@ -33,9 +55,11 @@ model = st.text_input("Enter Model Deployment Name", value="{deployment_name}")
 
 # Set up the Open AI Client
 openai.api_type = "azure"
-openai.api_base = endpoint
-openai.api_version = apiversion
-openai.api_key = apikey
+openai.api_base = "https://tp-tprompt1.openai.azure.com"
+openai.api_version = "2024-02-01"
+openai.api_key = "e26fd76c0671416dbdc20f1e09110b88"
+
+list_deployments()
 
 # Set up the default prompt for the AI assistant
 default_prompt = """
