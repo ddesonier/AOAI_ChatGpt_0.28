@@ -32,4 +32,16 @@ This project is designed to be used with VSCode and the Remote Containers extens
 The `requirements.txt` file contains all the python dependencies for this project.  The `devcontainer.json` file will automatically install these dependencies when the container is built.
 
 
+### Docker
 
+```bash
+$ docker build --no-cache -t yourusername/app .
+
+$ docker run -p 8501:8501 yourusername/app
+
+$ docker login myregistry.azurecr.io
+
+$ docker tag yourusername/app myregistry.azurecr.io/app:v1
+
+$ docker push myregistry.azurecr.io/app:v1
+```

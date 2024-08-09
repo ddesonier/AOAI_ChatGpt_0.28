@@ -7,10 +7,17 @@ import datetime
 import json
 
 # Get user input for AOAI endpoint, API key, API version, and deployment name
-endpoint = st.text_input("Enter the AOAI Endpoint", value="https://{instance_name}.openai.azure.com")
-apikey = st.text_input("Enter a API Key", type="password")
-apiversion = st.text_input("Enter a API Key", value="2024-02-01")
+# endpoint = st.text_input("Enter the AOAI Endpoint", value="https://{instance_name}.openai.azure.com")
+# apikey = st.text_input("Enter a API Key", type="password")
+# apiversion = st.text_input("Enter a API Key", value="2024-02-01")
 model = st.text_input("Enter Model Deployment Name", value="{deployment_name}")
+
+# Get user input for AOAI endpoint, API key, API version, and deployment name
+endpoint = os.getenv('AOAI_ENDPOINT')
+apikey = os.getenv('API_KEY')
+apiversion = os.getenv('API_VERSION')
+
+
 
 # Define available models
 #models = ["gpt-4o", "gpt-35-turbo"]
